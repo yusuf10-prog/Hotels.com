@@ -21,10 +21,10 @@ public class RegisterPage {
     @FindBy(xpath = "//button[contains(text(),'Uygulamayı edinin')]")
     private WebElement getAppButton;
 
-    @FindBy(xpath = "//button[contains(text(),'Giriş')] | //button[contains(@class, 'sign-in')] | //a[contains(text(),'Giriş')]")
+    @FindBy(xpath = "//button[contains(@class, 'uitk-button-has-text')] | //button[contains(@class, 'uitk-button')] | //a[contains(@data-stid, 'link-header-account-signin')]")
     private WebElement signInButton;
 
-    @FindBy(xpath = "//a[contains(text(),'Ücretsiz hesap oluştur')]")
+    @FindBy(xpath = "//a[contains(@data-stid, 'link-header-account-signup')] | //button[contains(text(), 'Kaydol')] | //a[contains(text(), 'Kaydol')]") 
     private WebElement createAccountLink;
 
     @FindBy(xpath = "//input[@id='email']")
@@ -42,7 +42,7 @@ public class RegisterPage {
     @FindBy(xpath = "//button[contains(text(),'Hesap oluştur')]")
     private WebElement createAccountButton;
 
-    @FindBy(xpath = "//button[contains(@id, 'accept-btn')] | //button[contains(text(),'Kabul')] | //button[contains(@class, 'accept-cookies')]")
+    @FindBy(xpath = "//button[@id='accept-button'] | //button[contains(@class, 'accept')] | //button[contains(@class, 'cookie-consent')] | //button[contains(text(), 'Kabul')] | //button[contains(@aria-label, 'Çerezleri kabul et')]") 
     private WebElement acceptCookiesButton;
 
     public void clickSignInButton() {

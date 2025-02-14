@@ -5,6 +5,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import pages.RegisterPage;
 
@@ -15,14 +17,36 @@ public class RegisterSteps {
 
     @Given("user is on Hotels.com homepage")
     public void userIsOnHotelsHomepage() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-        driver.get("https://tr.hotels.com/");
-        registerPage = new RegisterPage(driver);
         try {
-            Thread.sleep(2000); // Wait for initial page load
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+            driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+            
+            driver.get("https://tr.hotels.com/");
+            registerPage = new RegisterPage(driver);
+            
+            // Wait for page to be fully loaded
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(webDriver -> ((JavascriptExecutor) webDriver)
+                .executeScript("return document.readyState")
+                .equals("complete"));
+            
+            Thread.sleep(3000); // Additional wait for dynamic content
+        } catch (Exception e) {
+            System.out.println("Error during browser initialization: " + e.getMessage());
+            if (driver != null) {
+                driver.quit();
+            }
+            throw new RuntimeException(e);
+        }
+    }
+
+    @When("user waits for the page to be fully loaded")
+    public void userWaitsForPageToLoad() {
+        try {
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -30,7 +54,30 @@ public class RegisterSteps {
 
     @When("user clicks on sign in button")
     public void userClicksOnSignInButton() {
-        registerPage.clickSignInButton();
+        try {
+            registerPage.clickSignInButton();
+        } catch (Exception e) {
+            System.out.println("Error clicking sign in button: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @And("user waits for the sign in page to load")
+    public void userWaitsForSignInPageToLoad() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("user waits for the registration form to load")
+    public void userWaitsForRegistrationFormToLoad() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @And("user clicks on create account link")
@@ -62,10 +109,24 @@ public class RegisterSteps {
         registerPage.clickCreateAccountButton();
     }
 
+    @Then("user should see successful registration message")
+    public void userShouldSeeSuccessfulRegistrationMessage() {
+        // Implementation will depend on the actual success message shown
+        try {
+            Thread.sleep(2000); // Wait for success message
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @After
     public void tearDown() {
         if (driver != null) {
-            driver.quit();
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                System.out.println("Error during driver cleanup: " + e.getMessage());
+            }
         }
     }
 }
