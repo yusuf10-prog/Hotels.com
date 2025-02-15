@@ -1,18 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: runners.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 62.53 s <<< FAILURE! -- in runners.TestRunner
-Hotels.com Registration.Register new user with faker data -- Time elapsed: 60.97 s <<< ERROR!
-org.openqa.selenium.NoSuchElementException: 
-no such element: Unable to locate element: {"method":"xpath","selector":"//a[contains(text(),'Ücretsiz hesap oluştur')]"}
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 74.12 s <<< FAILURE! -- in runners.TestRunner
+Hotels.com Registration.Register new user with faker data -- Time elapsed: 71.82 s <<< ERROR!
+org.openqa.selenium.ElementClickInterceptedException: 
+element click intercepted: Element <button aria-roledescription="misafir sayısını değiştirmek için genişletin" data-stid="open-room-picker" aria-expanded="false" aria-label="Misafir sayısı, ..." class="uitk-menu-trigger open-room-picker-observer-root uitk-fake-input uitk-form-field-trigger uitk-field-fake-input uitk-field-fake-input-hasicon" type="button">2 misafir, 1 oda</button> is not clickable at point (971, 184). Other element would receive the click: <h2 class="uitk-heading uitk-heading-5 uitk-layout-flex-item">...</h2>
   (Session info: chrome=128.0.6613.138)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.15.0', revision: '1d14b5521b'
 System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '21.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [92a1e2bf35368838c592ab8060bf66af, findElement {using=xpath, value=//a[contains(text(),'Ücretsiz hesap oluştur')]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.138, chrome: {chromedriverVersion: 128.0.6613.137 (fe621c5aa2d..., userDataDir: /var/folders/q7/fgckgx0j1h9...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52966}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:52966/devtoo..., se:cdpVersion: 128.0.6613.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 92a1e2bf35368838c592ab8060bf66af
+Command: [451c95d6b4b3b98e6a3117a3b915c336, clickElement {id=f.02A6BEF6F65D628910431934B633FF2B.d.E133252832B29F2F46D4984D90ABD402.e.43}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.138, chrome: {chromedriverVersion: 128.0.6613.137 (fe621c5aa2d..., userDataDir: /var/folders/q7/fgckgx0j1h9...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54895}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54895/devtoo..., se:cdpVersion: 128.0.6613.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (451c95d6b4b3b98e6a3117a3b915c336)] -> xpath: //button[contains(@class, 'uitk-menu-trigger')] | //button[contains(@data-stid, 'header-menu')] | //button[contains(@aria-label, 'Hesap')]]
+Session ID: 451c95d6b4b3b98e6a3117a3b915c336
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -23,14 +23,13 @@ Session ID: 92a1e2bf35368838c592ab8060bf66af
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:607)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:364)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:358)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy21.click(Unknown Source)
-	at pages.RegisterPage.clickCreateAccountLink(RegisterPage.java:53)
-	at stepdefinitions.RegisterSteps.userClicksOnCreateAccountLink(RegisterSteps.java:38)
-	at ✽.user clicks on create account link(file:///Users/yusuf/Desktop/hotels.com/src/test/resources/features/register.feature:7)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy22.click(Unknown Source)
+	at pages.RegisterPage.clickSignInButton(RegisterPage.java:56)
+	at stepdefinitions.RegisterSteps.userClicksOnSignInButton(RegisterSteps.java:66)
+	at ✽.user clicks on sign in button(file:///Users/yusuf/Desktop/hotels.com/src/test/resources/features/register.feature:8)
 

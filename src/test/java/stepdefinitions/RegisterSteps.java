@@ -7,6 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import pages.RegisterPage;
 
@@ -47,6 +52,9 @@ public class RegisterSteps {
     public void userWaitsForPageToLoad() {
         try {
             Thread.sleep(2000);
+            // Print page source for debugging
+            System.out.println("Page source after loading:");
+            System.out.println(driver.getPageSource());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -56,6 +64,17 @@ public class RegisterSteps {
     public void userClicksOnSignInButton() {
         try {
             registerPage.clickSignInButton();
+            try {
+                // Take screenshot after clicking sign in
+                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(screenshot, new File("target/screenshot-after-signin.png"));
+                
+                // Print page source for debugging
+                System.out.println("Page source after clicking sign in:");
+                System.out.println(driver.getPageSource());
+            } catch (IOException e) {
+                System.out.println("Error saving screenshot: " + e.getMessage());
+            }
         } catch (Exception e) {
             System.out.println("Error clicking sign in button: " + e.getMessage());
             throw e;

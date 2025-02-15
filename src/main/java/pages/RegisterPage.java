@@ -21,10 +21,13 @@ public class RegisterPage {
     @FindBy(xpath = "//button[contains(text(),'Uygulamayı edinin')]")
     private WebElement getAppButton;
 
-    @FindBy(xpath = "//button[contains(@class, 'uitk-button-has-text')] | //button[contains(@class, 'uitk-button')] | //a[contains(@data-stid, 'link-header-account-signin')]")
+    @FindBy(xpath = "//button[contains(@class, 'uitk-menu-trigger')] | //button[contains(@data-stid, 'header-menu')] | //button[contains(@aria-label, 'Hesap')]")
+    private WebElement accountMenuButton;
+
+    @FindBy(xpath = "//a[contains(@data-stid, 'link-header-account-signin')] | //a[contains(text(), 'Giriş')] | //a[contains(@href, 'signin')] | //button[contains(text(), 'Giriş yap')]")
     private WebElement signInButton;
 
-    @FindBy(xpath = "//a[contains(@data-stid, 'link-header-account-signup')] | //button[contains(text(), 'Kaydol')] | //a[contains(text(), 'Kaydol')]") 
+    @FindBy(xpath = "//a[contains(@data-stid, 'link-header-account-signup')] | //a[contains(text(), 'Kaydol')] | //a[contains(@href, 'signup')] | //a[contains(text(), 'Hesap oluştur')] | //button[contains(text(), 'Hesap oluştur')] | //a[contains(@data-stid, 'button-sign-up')] | //button[contains(text(), 'Kaydol')] | //a[contains(@class, 'signup-link')] | //a[contains(@data-stid, 'header-account-signup')]") 
     private WebElement createAccountLink;
 
     @FindBy(xpath = "//input[@id='email']")
@@ -46,11 +49,42 @@ public class RegisterPage {
     private WebElement acceptCookiesButton;
 
     public void clickSignInButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(signInButton)).click();
+        try {
+            // First click the account menu button
+            WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(accountMenuButton));
+            System.out.println("Found account menu button with text: " + menuButton.getText());
+            menuButton.click();
+            
+            try {
+                // Wait a bit for the menu to appear
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Sleep interrupted: " + e.getMessage());
+            }
+            
+            // Then click the sign in link
+            WebElement signIn = wait.until(ExpectedConditions.elementToBeClickable(signInButton));
+            System.out.println("Found sign in link with text: " + signIn.getText());
+            signIn.click();
+        } catch (Exception e) {
+            System.out.println("Error in sign in process: " + e.getMessage());
+            throw e;
+        }
     }
 
     public void clickCreateAccountLink() {
-        createAccountLink.click();
+        try {
+            WebElement link = wait.until(ExpectedConditions.elementToBeClickable(createAccountLink));
+            System.out.println("Found create account link with text: " + link.getText());
+            System.out.println("Link attributes - class: " + link.getAttribute("class") + ", href: " + link.getAttribute("href"));
+            link.click();
+        } catch (Exception e) {
+            System.out.println("Error clicking create account link: " + e.getMessage());
+            // Print page source for debugging
+            System.out.println("Current page source:");
+            System.out.println(driver.getPageSource());
+            throw e;
+        }
     }
 
     public void enterEmail(String email) {
