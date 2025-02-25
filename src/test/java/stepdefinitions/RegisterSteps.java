@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -23,7 +23,7 @@ public class RegisterSteps {
     @Given("user is on Hotels.com homepage")
     public void userIsOnHotelsHomepage() {
         try {
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));

@@ -1,18 +1,17 @@
 -------------------------------------------------------------------------------
 Test set: runners.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 74.12 s <<< FAILURE! -- in runners.TestRunner
-Hotels.com Registration.Register new user with faker data -- Time elapsed: 71.82 s <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 71.53 s <<< FAILURE! -- in runners.TestRunner
+Hotels.com Registration.Register new user with faker data -- Time elapsed: 69.40 s <<< ERROR!
 org.openqa.selenium.ElementClickInterceptedException: 
-element click intercepted: Element <button aria-roledescription="misafir sayısını değiştirmek için genişletin" data-stid="open-room-picker" aria-expanded="false" aria-label="Misafir sayısı, ..." class="uitk-menu-trigger open-room-picker-observer-root uitk-fake-input uitk-form-field-trigger uitk-field-fake-input uitk-field-fake-input-hasicon" type="button">2 misafir, 1 oda</button> is not clickable at point (971, 184). Other element would receive the click: <h2 class="uitk-heading uitk-heading-5 uitk-layout-flex-item">...</h2>
-  (Session info: chrome=128.0.6613.138)
+Element <button class="uitk-menu-trigger open-room-picker-observer-root uitk-fake-input uitk-form-field-trigger uitk-field-fake-input uitk-field-fake-input-hasicon" type="button"> is not clickable at point (905,331) because another element <div> obscures it
 Build info: version: '4.15.0', revision: '1d14b5521b'
 System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '21.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [451c95d6b4b3b98e6a3117a3b915c336, clickElement {id=f.02A6BEF6F65D628910431934B633FF2B.d.E133252832B29F2F46D4984D90ABD402.e.43}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.138, chrome: {chromedriverVersion: 128.0.6613.137 (fe621c5aa2d..., userDataDir: /var/folders/q7/fgckgx0j1h9...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54895}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54895/devtoo..., se:cdpVersion: 128.0.6613.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (451c95d6b4b3b98e6a3117a3b915c336)] -> xpath: //button[contains(@class, 'uitk-menu-trigger')] | //button[contains(@data-stid, 'header-menu')] | //button[contains(@aria-label, 'Hesap')]]
-Session ID: 451c95d6b4b3b98e6a3117a3b915c336
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [2b9d35db-23b2-4aad-864e-9589fa38fcb5, clickElement {id=4af8e209-e89b-4326-a054-4f54db067843}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 135.0.1, moz:accessibilityChecks: false, moz:buildID: 20250216192613, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 19.6.0, moz:processID: 7672, moz:profile: /var/folders/q7/fgckgx0j1h9..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Macintosh; Int...}
+Element: [[FirefoxDriver: firefox on mac (2b9d35db-23b2-4aad-864e-9589fa38fcb5)] -> xpath: //button[contains(@class, 'uitk-menu-trigger')] | //button[contains(@data-stid, 'header-menu')] | //button[contains(@aria-label, 'Hesap')]]
+Session ID: 2b9d35db-23b2-4aad-864e-9589fa38fcb5
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
